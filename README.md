@@ -14,9 +14,6 @@ Como objetivo principal, espera-se ter um dispositivo inteligente que é capaz d
 
 Neste desafio serão utilizados diversos serviços da IBM Cloud, como o Watson Speech to Text (STT) para a transcrição de áudio, e o Watson Natural Language Understanding (NLU) para extração de entidades textuais e análise de sentimento. As falas do motorista deverão ser processadas em áudio e texto, e as entidades textuais pertinentes a identificação de componentes, ou critérios de avaliação dos veículos, deverão ser anotadas por um modelo de IA. Esses serviços serão todos integrados por meio de um framework ou tecnologia de escolha livre pelo participante, que além do modelo treinado também entregará uma API REST como solução.
 
-<div align="center">
-       <img width="100%" src="./doc/source/images/arquitetura.png" alt='video-tutorial'>
-</div>
 
 ##  Tecnologias aplicadas
 

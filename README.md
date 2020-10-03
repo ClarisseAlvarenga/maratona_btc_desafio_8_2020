@@ -28,13 +28,6 @@ Para este desafio serão utilizados os seguintes serviços da IBM Cloud:
 
 - [Watson Speech-to-Text](https://cloud.ibm.com/catalog/services/speech-to-text)
 
-Veja o vídeo-tutorial abaixo com dicas e instruções sobre como utilizar as principais tecnologias envolvidas:
-
-<div align="center">
-    <a href="https://www.youtube.com/watch?v=Nqyd5rJ0KJU">
-       <img width="90%" src="./doc/source/images/THUMB-TUTORIAL-DESAFIO8-BR.png" alt='video-tutorial'>
-    </a>
-</div>
 
 ##  Desenvolvimento
 
@@ -311,13 +304,8 @@ Além disso, a recomendação deve obedecer algumas regras:
 
 A lógica de programação para a realização dessas tarefas é parte do desafio e deve ser implementada pelo participante. Na seção [Material de Apoio](#material-de-apoio) são apresentadas as referências de API dos serviços Watson STT e Watson NLU, que possuem exemplos e snippets de código em várias linguagens mostrando como utilizar os serviços da IBM Cloud diretamente com código. Neste repositório também se encontra a especificação da API desejada como solução (no padrão do Swagger, ou Open-API): [api.yaml](./doc/source/api.yaml). No dataset fornecido neste repositório também é dado um arquivo de áudio em formato FLAC para você testar sua API.
 
-Uma vez que você estiver confortável com sua solução, você precisará expor a API em alguma rota pública para que possamos testá-la. Recomendamos que você utilize a Cloud Foundry na IBM para hospedar sua aplicação, [aqui está um repositório com um exemplo](https://github.com/danitrod/cloud-foundry-example), e abaixo um vídeo de como realizar esse deploy:
+Uma vez que você estiver confortável com sua solução, você precisará expor a API em alguma rota pública para que possamos testá-la. Recomendamos que você utilize a Cloud Foundry na IBM para hospedar sua aplicação, [aqui está um repositório com um exemplo](https://github.com/danitrod/cloud-foundry-example).
 
-<div align="center">
-    <a href="https://www.youtube.com/watch?v=PFGPgO3YZ4c">
-       <img width="90%" src="./doc/source/images/THUMB-TUTORIAL-DESAFIO8-BR.png" alt='video-tutorial'>
-    </a>
-</div>
 ###  Resumo das tarefas
 
 1. Baixar o conjunto de [amostras de texto fornecido](./doc/source/dataset) para treinamento do WKS.

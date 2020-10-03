@@ -1,0 +1,384 @@
+[
+    {
+        "id": "a394bfc7.15825",
+        "type": "tab",
+        "label": "Flow 6",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7ea97350.4fa82c",
+        "type": "http in",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "url": "/fca_clarisse_2",
+        "method": "post",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 260,
+        "wires": [
+            [
+                "34f39a76.2fbcd6",
+                "f1e8db78.5eae78",
+                "859c4c39.96dce"
+            ]
+        ]
+    },
+    {
+        "id": "34f39a76.2fbcd6",
+        "type": "debug",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 150,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "73f48203.ea26dc",
+        "type": "debug",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "7ff9c472.7e056c",
+        "type": "function",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 560,
+        "y": 460,
+        "wires": [
+            [
+                "73f48203.ea26dc",
+                "77367d94.a198a4"
+            ]
+        ]
+    },
+    {
+        "id": "177c5037.caa46",
+        "type": "watson-speech-to-text",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "alternatives": 1,
+        "speakerlabels": true,
+        "smartformatting": true,
+        "lang": "pt-BR",
+        "langhidden": "pt-BR",
+        "langcustom": "NoCustomisationSetting",
+        "langcustomhidden": "",
+        "custom-weight": "0.5",
+        "band": "NarrowbandModel",
+        "bandhidden": "NarrowbandModel",
+        "keywords": "",
+        "keywords-threshold": "0.5",
+        "word-confidence": false,
+        "password": "",
+        "apikey": "XsEB9L2j5ipa_pXbrCa4iGGQYEiYrv4VyHvDw-njeGqr",
+        "payload-response": true,
+        "streaming-mode": false,
+        "streaming-mute": false,
+        "auto-connect": false,
+        "discard-listening": false,
+        "disable-precheck": false,
+        "service-endpoint": "",
+        "x": 360,
+        "y": 460,
+        "wires": [
+            [
+                "7ff9c472.7e056c"
+            ]
+        ]
+    },
+    {
+        "id": "8b2685c7.bb24f8",
+        "type": "change",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "req.files[0].buffer",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 180,
+        "y": 440,
+        "wires": [
+            [
+                "177c5037.caa46",
+                "361cc155.56988e"
+            ]
+        ]
+    },
+    {
+        "id": "361cc155.56988e",
+        "type": "debug",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "77367d94.a198a4",
+        "type": "function",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "func": "msg.nlu_options = \n{\"entity_model\":\"11aa54a4-360c-49f2-b71b-e5016ca269f2\",\n \"relations_model\":\"11aa54a4-360c-49f2-b71b-e5016ca269f2\"    \n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 620,
+        "y": 280,
+        "wires": [
+            [
+                "2062bcc3.6fde54"
+            ]
+        ]
+    },
+    {
+        "id": "2062bcc3.6fde54",
+        "type": "natural-language-understanding",
+        "z": "a394bfc7.15825",
+        "name": "nlu",
+        "categories": true,
+        "limitcategories": "3",
+        "concepts": false,
+        "maxconcepts": "8",
+        "doc-emotion": false,
+        "doc-emotion-target": "",
+        "doc-sentiment": true,
+        "doc-sentiment-target": "",
+        "entity": true,
+        "entity-emotion": false,
+        "entity-sentiment": true,
+        "maxentities": "50",
+        "keyword": false,
+        "keyword-emotion": false,
+        "keyword-sentiment": false,
+        "maxkeywords": "50",
+        "metadata": false,
+        "relation": false,
+        "semantic": false,
+        "semantic-entities": false,
+        "semantic-keywords": false,
+        "maxsemantics": "50",
+        "limittextcharacters": "0",
+        "syntax": false,
+        "syntax-sentences": false,
+        "syntax-tokens-lemma": false,
+        "syntax-tokens-pos": false,
+        "service-endpoint": "",
+        "x": 770,
+        "y": 240,
+        "wires": [
+            [
+                "f34bc748.4b0fa8"
+            ]
+        ]
+    },
+    {
+        "id": "f34bc748.4b0fa8",
+        "type": "function",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "func": "var sentimentGeneral = msg.features.sentiment.document.label\nvar features = msg.features;//dados da mensagem recebida\nvar entities = features.entities; //busca as entidades\nvar msg1 = {'recommendation': '', 'entities': []}; //mensagem quando não há entidades\nvar msgList = []; //instancia o objeto que retornará as entidades\nvar validator = []; //instancia o validador de sentimentos\ntiebreakerCriteria = [];\nvar worstSentiment = \"\";\nvar model = msg.req.body.car //o modelo que vem do form\npriorities = [\"SEGURANCA\", \"CONSUMO\",\"DESEMPENHO\", \"MANUTENCAO\", \"CONFORTO\", \"DESIGN\", \"ACESSORIOS\"]//cfe README\n//recomendações definidas manualmente\nrecomendacoes = {\n    \"ACESSORIOS\" : [\"RENEGADE\", \"TORO\"],\n    \"CONFORTO\" :  [\"CRONOS\",\"TORO\"],\n    \"CONSUMO\" : [\"ARGO\",\"DUCATO\"],  \n    \"DESEMPENHO\" : [\"DUCATO\",\"MAREA\"],\n    \"DESIGN\" : [\"RENEGADE\", \"ARGO\"] ,\n    \"MANUTENCAO\" :[\"FIORINO\",\"FIAT 500\"], \n    \"SEGURANCA\" : [\"LINEA\",\"TORO\"]\n} \n\n//cria o msgList\nfor (var i = 0; i<entities.length; i++){\n\tmsgList.push({\n                   \"entity\": entities[i].type,\n                   \"sentiment\": entities[i].sentiment.score,\n                   \"mention\": entities[i].text,\n                   })\n    validator.push(entities[i].sentiment.score)\n}\n\n//organiza a lista por sentimento, do pior pro maior\nmsgList.sort((a,b) => {\n    if (a.sentiment > b.sentiment) {\n        return 1;\n    }\n    if (a.sentiment < b.sentiment) {\n    return -1;\n    }\n    // a must be equal to b\n    return 0;\n});\n\n//cria o worst sentiment\n\nif (msgList.length === 0){\n    worstSentiment = \"\"\n}else{\n    worstSentiment = msgList[0]\n}\n\n\ntiebreakerCriteria.push(worstSentiment);\n\nif (msgList.length !== 0){\n    msgList.forEach((entry) => {\n    if(\n        worstSentiment[\"sentiment\"] +0.1 >= entry[\"sentiment\"] &&\n        worstSentiment[\"sentiment\"] -0.1 <= entry[\"sentiment\"] &&\n        worstSentiment[\"entity\"] != entry[\"entity\"]\n\n    ){\n        tiebreakerCriteria.push(entry);\n    }\n});\n\nif(tiebreakerCriteria.length >1){\n    for (let k = 0; k< priorities.length; k++){\n        var pos = tiebreakerCriteria\n            .map((e) => e[\"entity\"])\n            .indexOf(priorities[k]);\n    if(pos >= 0){\n        worstSentiment = tiebreakerCriteria[pos];\n        break;\n    }\n  }  \n}\n    \n}\n\n\n//Calcula a média dos sentimentos\nvar total = 0;\nfor(var a = 0; a < validator.length; a++) {\n    total += validator[a];\n}\nvar avg = total / validator.length;\n\n\n\nitem = \"SEGURANCA\"\n//busca o primeiro item no array de carros recomendados\nrecomendado = recomendacoes[item][0];\n\nif (avg > 0){\n    //if média entidades.sentimentos >=0 then recomendado = \"\"\n    recomendado = \"\"\n}else{\n    //implementar o validador de empate entre entidades\n    item = worstSentiment[\"entity\"]\n}\n//se o carro recomendado for igual ao modelo informado, retorna a segunda posição do array\nif (recomendado == model){recomendado = recomendacoes[item][1]}\n\n//mensagem de retorno da API\nvar msg2 = { \"recommendation\": recomendado, \"entities\": msgList};\n\nif (msgList.length === 0) {\n        msg.payload = msg1\n        return [msg,null];\n} else {\n    msg.payload = msg2\n    return [msg,null];\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 980,
+        "y": 240,
+        "wires": [
+            [
+                "f3a9c8cc.18ac98"
+            ]
+        ]
+    },
+    {
+        "id": "73412f41.5d399",
+        "type": "debug",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1310,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3e81997d.d7e136",
+        "type": "http response",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1350,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f1e8db78.5eae78",
+        "type": "switch",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "property": "payload.text",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "istype",
+                "v": "string",
+                "vt": "string"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 430,
+        "y": 260,
+        "wires": [
+            [
+                "68fae74f.be8a98"
+            ],
+            [
+                "8b2685c7.bb24f8"
+            ]
+        ]
+    },
+    {
+        "id": "68fae74f.be8a98",
+        "type": "change",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "req.body.text",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 80,
+        "wires": [
+            [
+                "77367d94.a198a4"
+            ]
+        ]
+    },
+    {
+        "id": "859c4c39.96dce",
+        "type": "function",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "func": "msg.payload = { \"car\" : msg.req.body.car}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 760,
+        "y": 80,
+        "wires": [
+            [
+                "755f9330.fd3e0c",
+                "f34bc748.4b0fa8"
+            ]
+        ]
+    },
+    {
+        "id": "755f9330.fd3e0c",
+        "type": "debug",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "e0f03a20.864a68",
+        "type": "comment",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "info": "priorities = [{\n    \"ACESSORIOS\" : { 1: \"RENEGADE\",\n                     2: \"TORO\",\n                     3: \"ARGO\"},\n    \"CONFORTO\" :     { 1: \"CRONOS\",\n                     2: \"TORO\",\n                     3: \"MAREA\"},\n    \"CONSUMO\" :     { 1: \"TORO\",\n                     2: \"ARGO\",\n                     3: \"DUCATO\"},\n    \"DESEMPENHO\" :     { 1: \"DUCATO\",\n                     2: \"MAREA\",\n                     3: \"FIAT 500\"},\n    \"DESIGN\" :         { 1: \"CRONOS\",\n                     2: \"ARGO\",\n                     3: \"RENEGADE\"},\n    \"MANUTENCAO\" :     { 1: \"FIORINO\",\n                     2: \"FIAT 500\",\n                     3: \"TORO\"},\n    \"SEGURANCA\" :     { 1: \"MAREA\",\n                     2: \"TORO\",\n                     3: \"LINEA\"},\n\n}]\n\npriorities = {\n1 :\t\"SEGURANCA\",\n2 :\t\"CONSUMO\",\n3 :\t\"DESEMPENHO\",\n4 :\t\"MANUTENCAO\",\n5 :\t\"CONFORTO\",\n6 :\t\"DESIGN\",\n7 :\"ACESSORIOS\"\n}",
+        "x": 780,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "f3a9c8cc.18ac98",
+        "type": "json",
+        "z": "a394bfc7.15825",
+        "name": "",
+        "property": "payload",
+        "action": "str",
+        "pretty": false,
+        "x": 1170,
+        "y": 220,
+        "wires": [
+            [
+                "73412f41.5d399",
+                "3e81997d.d7e136"
+            ]
+        ]
+    }
+]
